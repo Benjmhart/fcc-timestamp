@@ -11,6 +11,11 @@ module.exports = app => {
     app.get('/:time', (req, res) => {
         const day = new Date(req.params.time)
         if(day.toDateString() === 'Invalid Date'){
+            if(req.params.time.toUpperCase() === 'NOW'){
+                const now = new Date()
+                res.send(makeResponse(now))
+                return
+            }
             const unixDay = new Date(req.params.time * 1000)
             if(unixDay.toDateString() === 'Invalid Date'){
                 res.send({ error:'Error 400: cannot process request'})
