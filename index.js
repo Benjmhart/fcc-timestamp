@@ -17,4 +17,4 @@ app.use(bodyParser.json())
 require('./routes/root')(app)
 
 
-app.listen(process.env.port || 5000)
+app.listen(process.env.PORT || 5000)
